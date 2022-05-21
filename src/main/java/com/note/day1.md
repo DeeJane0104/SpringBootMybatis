@@ -1,0 +1,19 @@
+1. 搭建项目，下载maven仓库的时候非常慢
+   1. pom.xml文件上右键->maven->open "settings.xml"
+   2. 在settings.xml中使用阿里的镜像路径下载
+   3. 修改pom.xml后，需要右侧边栏maven中reload依赖文件
+2. application.properties中写上数据库的一些配置
+3. 实体类加上lombok的@Data注解，可以自动生成属性的get,set
+   1. 注意属性如果是static修饰，是访问不到get,set方法的
+4. Mapper类需要加上@Mapper注解
+   1. 写SQL语句采用@Select注解实现
+5. Service类需要加上@Service注解
+   1. 调用Mapper类，采用@Autowired注解（@Autowired注解不推荐字段注入，推荐采用构造方法注入）
+6. Controller类需要加的注解
+   1. @RestController注解
+      1. @RestController注解与@Controller注解的区别
+         1. @RestController一般返回特殊处理格式，如JSON；@Controller返回对应的页面
+         2. 因此在没有对应界面，只想要查看返回的json数据时，需要用@RestController注解；或者使用@Controller+@ResponseBody
+   2. @RequestMapping注解
+      1. 类上，对应第一层目录
+      2. 方法上，对应第二层目录
